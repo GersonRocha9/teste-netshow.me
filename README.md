@@ -1,7 +1,7 @@
 # Netshow.me
 
-<img src="./assets/screenshot-1.png" alt="Screenshot 1" width="300"/>
-<img src="./assets/screenshot-2.png" alt="Screenshot 2" width="300"/>
+<img src="./assets/screenshot-1.png" alt="Screenshot 1" width="250"/>
+<img src="./assets/screenshot-2.png" alt="Screenshot 2" width="250"/>
 
 ## Descrição do App
 
