@@ -72,7 +72,19 @@ export const VideoDetails = ({ route, navigation }: VideoDetailsProps) => {
           <Text style={styles.title}>{video?.title}</Text>
 
           <View style={styles.badgeContainer}>
-            <View style={styles.badge}>
+            <View
+              style={[
+                styles.badge,
+                {
+                  backgroundColor:
+                    video?.category === 1
+                      ? '#465D3A'
+                      : video?.category === 2
+                        ? '#1E2DBD'
+                        : '#673B3F',
+                },
+              ]}
+            >
               <Text style={styles.badgeText}>
                 {CATEGORIES[video?.category as keyof typeof CATEGORIES]}
               </Text>
