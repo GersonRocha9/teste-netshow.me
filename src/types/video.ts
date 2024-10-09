@@ -10,3 +10,9 @@ export type VideosResponse = {
   views: number
   likes: number
 }
+
+export const CATEGORIES = {
+  1: 'Over The Cast',
+  2: 'Flow Experience 2021',
+  3: 'Netshow.me Talks',
+}
