@@ -1,18 +1,44 @@
-import { View, ImageBackground, StyleSheet } from 'react-native'
+import {
+  View,
+  ImageBackground,
+  StyleSheet,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native'
 
-interface Item {
-  thumbnail: string
+import { VideosResponse } from '../types/video'
+
+interface ItemProps {
+  thumbnail: VideosResponse['thumbnail']
+  id: VideosResponse['id']
 }
 
-export const ThumbnailCard = ({ item }: { item: Item[] }) => {
+const WIDTH_SCREEN = Dimensions.get('window').width
+
+export const ThumbnailCard = ({
+  item,
+  navigation,
+}: {
+  item: ItemProps[]
+  navigation: any
+}) => {
   return (
     <View style={styles.row}>
-      {item.map((singleItem, index) => (
-        <ImageBackground
+      {item.map((video, index) => (
+        <TouchableOpacity
           key={index}
-          style={styles.thumbnail}
-          source={{ uri: singleItem.thumbnail }}
-        />
+          style={styles.touchable}
+          onPress={() => {
+            navigation.navigate('videoDetails', {
+              videoId: video.id,
+            })
+          }}
+        >
+          <ImageBackground
+            style={styles.thumbnail}
+            source={{ uri: video.thumbnail }}
+          />
+        </TouchableOpacity>
       ))}
     </View>
   )
@@ -26,10 +52,13 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   thumbnail: {
-    flexBasis: '48%',
+    width: WIDTH_SCREEN / 2 - 15,
     aspectRatio: 0.7,
     marginBottom: 10,
     borderRadius: 10,
     overflow: 'hidden',
+  },
+  touchable: {
+    flexBasis: '48%',
   },
 })
