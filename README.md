@@ -1,8 +1,8 @@
 # Netshow.me
 
 <div style="display: flex; justify-content: center;">
-    <img src="./assets/screenshot-1.png" alt="Screenshot 1" width="250" style="margin-right: 10px;"/>
-    <img src="./assets/screenshot-2.png" alt="Screenshot 2" width="250"/>
+    <img src="./assets/screenshot-1.png" alt="Screenshot 1" width="300" style="margin-right: 10px;"/>
+    <img src="./assets/screenshot-2.png" alt="Screenshot 2" width="300"/>
 </div>
 
 ## Descrição do App
