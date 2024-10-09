@@ -1,25 +1,26 @@
-import { useQuery } from '@tanstack/react-query'
 import { FlatList, SafeAreaView, StyleSheet, View } from 'react-native'
 
+import { Header } from '../components/header'
 import { ThumbnailCard } from '../components/thumbnail-card'
-import { getVideos } from '../services/get-videos'
-import { VideosResponse } from '../types/video'
-import { groupData } from '../utils/group-items'
+import { useGroupedVideos } from '../hooks/useGroupedVideos'
 
-export const Home = () => {
-  const { data: videos = [] } = useQuery<VideosResponse[]>({
-    queryKey: ['videos'],
-    queryFn: getVideos,
-  })
+interface HomeProps {
+  navigation: any
+}
 
-  const groupedItems = groupData(videos, 2)
+export const Home = ({ navigation }: HomeProps) => {
+  const { videos } = useGroupedVideos(2)
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
+      <Header />
+
       <View style={styles.container}>
         <FlatList
-          data={groupedItems}
-          renderItem={({ item }) => <ThumbnailCard item={item} />}
+          data={videos}
+          renderItem={({ item }) => (
+            <ThumbnailCard item={item} navigation={navigation} />
+          )}
           showsVerticalScrollIndicator={false}
         />
       </View>
