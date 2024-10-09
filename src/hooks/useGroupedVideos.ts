@@ -9,6 +9,7 @@ export const useGroupedVideos = (groupSize: number) => {
     data = [],
     isLoading,
     isError,
+    error,
   } = useQuery<VideosResponse[]>({
     queryKey: ['videos'],
     queryFn: getVideos,
@@ -16,5 +17,9 @@ export const useGroupedVideos = (groupSize: number) => {
 
   const videos = groupData(data, groupSize)
 
-  return { videos, isLoading, isError }
+  if (isError) {
+    console.error(error)
+  }
+
+  return { videos, isLoading, isError, error }
 }
