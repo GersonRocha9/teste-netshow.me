@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import { Home } from '../screens/home'
-import { VideoDetails } from '../screens/video-details'
+import { Home } from '../screens/home/home'
+import { VideoDetails } from '../screens/video-details/video-details'
 
 type AppStackRoutes = {
   home: undefined

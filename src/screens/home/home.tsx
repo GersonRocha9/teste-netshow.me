@@ -1,8 +1,10 @@
-import { FlatList, SafeAreaView, StyleSheet, View } from 'react-native'
+import { FlatList, SafeAreaView, View } from 'react-native'
 
-import { Header } from '../components/header'
-import { ThumbnailCard } from '../components/thumbnail-card'
-import { useGroupedVideos } from '../hooks/useGroupedVideos'
+import { Header } from '../../components/header'
+import { ThumbnailCard } from '../../components/thumbnail-card'
+import { useGroupedVideos } from '../../hooks/useGroupedVideos'
+
+import { styles } from './styles'
 
 interface HomeProps {
   navigation: any
@@ -29,13 +31,3 @@ export const Home = ({ navigation }: HomeProps) => {
     </SafeAreaView>
   )
 }
-
-const styles = StyleSheet.create({
-  safeAreaView: {
-    flex: 1,
-  },
-  container: {
-    flex: 1,
-    paddingHorizontal: 10,
-  },
-})
