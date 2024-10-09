@@ -22,6 +22,8 @@ export const Home = ({ navigation }: HomeProps) => {
             <ThumbnailCard item={item} navigation={navigation} />
           )}
           showsVerticalScrollIndicator={false}
+          initialNumToRender={6}
+          refreshing
         />
       </View>
     </SafeAreaView>
