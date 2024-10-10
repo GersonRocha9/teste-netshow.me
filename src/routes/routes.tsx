@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { Home } from '../screens/home/home'
 import { VideoDetails } from '../screens/video-details/video-details'
 
-type AppStackRoutes = {
+export type AppStackRoutes = {
   home: undefined
   videoDetails: { videoId: string }
 }

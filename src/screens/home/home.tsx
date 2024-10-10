@@ -1,16 +1,18 @@
+import { NavigationProp } from '@react-navigation/native'
 import { ActivityIndicator, FlatList, SafeAreaView, View } from 'react-native'
 
 import { Header } from '../../components/header'
 import { ThumbnailCard } from '../../components/thumbnail-card'
 import { useGroupedVideos } from '../../hooks/useGroupedVideos'
+import { AppStackRoutes } from '../../routes/routes'
 
 import { styles } from './styles'
 
-interface HomeProps {
-  navigation: any
-}
-
-export const Home = ({ navigation }: HomeProps) => {
+export const Home = ({
+  navigation,
+}: {
+  navigation: NavigationProp<AppStackRoutes>
+}) => {
   const { videos, isLoading } = useGroupedVideos(2)
 
   return (

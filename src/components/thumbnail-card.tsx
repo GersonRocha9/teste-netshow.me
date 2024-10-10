@@ -1,3 +1,4 @@
+import { NavigationProp } from '@react-navigation/native'
 import {
   View,
   ImageBackground,
@@ -6,6 +7,7 @@ import {
   Dimensions,
 } from 'react-native'
 
+import { AppStackRoutes } from '../routes/routes'
 import { VideosResponse } from '../types/video'
 
 interface ItemProps {
@@ -20,7 +22,7 @@ export const ThumbnailCard = ({
   navigation,
 }: {
   item: ItemProps[]
-  navigation: any
+  navigation: NavigationProp<AppStackRoutes>
 }) => {
   return (
     <View style={styles.row}>
@@ -29,9 +31,7 @@ export const ThumbnailCard = ({
           key={index}
           style={styles.touchable}
           onPress={() => {
-            navigation.navigate('videoDetails', {
-              videoId: video.id,
-            })
+            navigation.navigate('videoDetails', { videoId: video.id })
           }}
         >
           <ImageBackground
