@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 
+import { QUERY_KEYS } from '../constants/queryKeys'
 import { getVideos } from '../services/get-videos'
 import { VideosResponse } from '../types/video'
 import { groupData } from '../utils/group-items'
@@ -11,7 +12,7 @@ export const useGroupedVideos = (groupSize: number) => {
     isError,
     error,
   } = useQuery<VideosResponse[]>({
-    queryKey: ['videos'],
+    queryKey: [QUERY_KEYS.VIDEOS],
     queryFn: getVideos,
   })
 

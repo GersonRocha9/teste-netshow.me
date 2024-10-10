@@ -13,6 +13,7 @@ import {
 
 import { Header } from '../../components/header'
 import { VideoLoading } from '../../components/video-loading'
+import { QUERY_KEYS } from '../../constants/queryKeys'
 import { useVideoById } from '../../hooks/useVideoById'
 import { countViewVideo } from '../../services/count-view-video'
 import { likeVideo } from '../../services/like-video'
@@ -32,14 +33,18 @@ export const VideoDetails = ({ route, navigation }: VideoDetailsProps) => {
   const likeVideoMutation = useMutation({
     mutationFn: () => likeVideo(videoId, video?.likes as number),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['videoInfo', videoId] })
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.VIDEO_INFO, videoId],
+      })
     },
   })
 
   const countViewVideoMutation = useMutation({
     mutationFn: () => countViewVideo(videoId, video?.views as number),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['videoInfo', videoId] })
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.VIDEO_INFO, videoId],
+      })
     },
   })
 
