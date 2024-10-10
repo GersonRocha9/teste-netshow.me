@@ -24,6 +24,7 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias e bibliotecas:
   - `react-native-safe-area-context`
   - `react-native-screens`
   - `react-native-svg`
+  - `react-native-reanimated`
   - `expo-av`
   - `rn-placeholder`
 
