@@ -1,10 +1,4 @@
-import { NavigationProp } from '@react-navigation/native'
-import { render } from '@testing-library/react-native'
-
-import { ThumbnailCard } from '../src/components/thumbnail-card'
-import { AppStackRoutes } from '../src/routes/routes'
-
-const mockedVideo = {
+export const mockedVideo = {
   id: '90562',
   title:
     'Como alavancar vendas indiretas com parcerias, com Guilherme Tsuchida',
@@ -20,15 +14,3 @@ const mockedVideo = {
   views: 0,
   likes: 0,
 }
-
-describe('Thumbnail Card', () => {
-  it('should render Thumbnail Card correctly', () => {
-    render(
-      <ThumbnailCard
-        index={0}
-        video={mockedVideo}
-        navigation={{} as NavigationProp<AppStackRoutes>}
-      />,
-    )
-  })
-})

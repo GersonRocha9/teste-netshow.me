@@ -2,8 +2,8 @@ import { NavigationProp } from '@react-navigation/native'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { render } from '@testing-library/react-native'
 
-import { AppStackRoutes } from '../src/routes/routes'
-import { Home } from '../src/screens/home/home'
+import { AppStackRoutes } from '../routes/routes'
+import { Home } from '../screens/home/home'
 
 const queryClient = new QueryClient()
 

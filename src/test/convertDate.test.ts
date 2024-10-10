@@ -1,4 +1,4 @@
-import { convertDate } from '../src/utils/convert-date'
+import { convertDate } from '../utils/convert-date'
 
 it('should return a formatted date string', () => {
   const dateString = '2024-06-03T19:13:49.000000Z'
