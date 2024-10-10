@@ -6,40 +6,48 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native'
+import Animated, {
+  LinearTransition,
+  SlideInLeft,
+  SlideInRight,
+} from 'react-native-reanimated'
 
 import { AppStackRoutes } from '../routes/routes'
 import { VideosResponse } from '../types/video'
 
-interface ItemProps {
-  thumbnail: VideosResponse['thumbnail']
-  id: VideosResponse['id']
+const WIDTH_SCREEN = Dimensions.get('window').width
+const TouchableAnimated = Animated.createAnimatedComponent(TouchableOpacity)
+
+interface ThumbnailCardProps {
+  index: number
+  video: VideosResponse
+  navigation: NavigationProp<AppStackRoutes>
 }
 
-const WIDTH_SCREEN = Dimensions.get('window').width
-
 export const ThumbnailCard = ({
-  item,
+  index,
+  video,
   navigation,
-}: {
-  item: ItemProps[]
-  navigation: NavigationProp<AppStackRoutes>
-}) => {
+}: ThumbnailCardProps) => {
   return (
     <View style={styles.row}>
-      {item.map((video, index) => (
-        <TouchableOpacity
-          key={index}
-          style={styles.touchable}
-          onPress={() => {
-            navigation.navigate('videoDetails', { videoId: video.id })
-          }}
-        >
-          <ImageBackground
-            style={styles.thumbnail}
-            source={{ uri: video.thumbnail }}
-          />
-        </TouchableOpacity>
-      ))}
+      <TouchableAnimated
+        entering={
+          index % 2 === 0
+            ? SlideInLeft.duration(500).delay(125 * index)
+            : SlideInRight.duration(500).delay(125 * index)
+        }
+        layout={LinearTransition}
+        style={styles.touchable}
+        onPress={() => {
+          navigation.navigate('videoDetails', { videoId: video.id })
+        }}
+      >
+        <ImageBackground
+          style={styles.thumbnail}
+          source={{ uri: video.thumbnail }}
+        />
+      </TouchableAnimated>
     </View>
   )
 }
