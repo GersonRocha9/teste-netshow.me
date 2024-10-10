@@ -15,8 +15,7 @@ import { Header } from '../../components/header'
 import { VideoLoading } from '../../components/video-loading'
 import { QUERY_KEYS } from '../../constants/queryKeys'
 import { useVideoById } from '../../hooks/useVideoById'
-import { countViewVideo } from '../../services/count-view-video'
-import { likeVideo } from '../../services/like-video'
+import { updateVideoField } from '../../services/update-video-field'
 import { CATEGORIES } from '../../types/video'
 import { VideoDetailsProps } from '../../types/video-details'
 import { convertDate } from '../../utils/convert-date'
@@ -31,7 +30,8 @@ export const VideoDetails = ({ route, navigation }: VideoDetailsProps) => {
   const hasFocusedRef = useRef(false)
 
   const likeVideoMutation = useMutation({
-    mutationFn: () => likeVideo(videoId, video?.likes as number),
+    mutationFn: () =>
+      updateVideoField(videoId, 'likes', video?.likes as number),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.VIDEO_INFO, videoId],
@@ -40,7 +40,8 @@ export const VideoDetails = ({ route, navigation }: VideoDetailsProps) => {
   })
 
   const countViewVideoMutation = useMutation({
-    mutationFn: () => countViewVideo(videoId, video?.views as number),
+    mutationFn: () =>
+      updateVideoField(videoId, 'views', video?.views as number),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.VIDEO_INFO, videoId],
