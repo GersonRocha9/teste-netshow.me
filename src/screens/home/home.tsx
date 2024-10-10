@@ -3,7 +3,7 @@ import { ActivityIndicator, FlatList, SafeAreaView, View } from 'react-native'
 
 import { Header } from '../../components/header'
 import { ThumbnailCard } from '../../components/thumbnail-card'
-import { useGroupedVideos } from '../../hooks/useGroupedVideos'
+import { useGetVideosFromApi } from '../../hooks/useGetVideosFromApi'
 import { AppStackRoutes } from '../../routes/routes'
 
 import { styles } from './styles'
@@ -13,7 +13,7 @@ export const Home = ({
 }: {
   navigation: NavigationProp<AppStackRoutes>
 }) => {
-  const { videos, isLoading } = useGroupedVideos(2)
+  const { videos, isLoading } = useGetVideosFromApi()
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
@@ -26,9 +26,17 @@ export const Home = ({
       ) : (
         <View style={styles.container}>
           <FlatList
+            columnWrapperStyle={{
+              justifyContent: 'space-between',
+            }}
+            numColumns={2}
             data={videos}
-            renderItem={({ item }) => (
-              <ThumbnailCard item={item} navigation={navigation} />
+            renderItem={({ item, index }) => (
+              <ThumbnailCard
+                index={index}
+                video={item}
+                navigation={navigation}
+              />
             )}
             showsVerticalScrollIndicator={false}
             initialNumToRender={6}
