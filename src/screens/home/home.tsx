@@ -1,10 +1,8 @@
+import { ErrorComponent, Header, ThumbnailCard } from '@components'
+import { useGetVideosFromApi } from '@hooks'
 import { NavigationProp } from '@react-navigation/native'
+import { AppStackRoutes } from '@routes'
 import { ActivityIndicator, FlatList, SafeAreaView, View } from 'react-native'
-
-import { Header } from '../../components/header'
-import { ThumbnailCard } from '../../components/thumbnail-card'
-import { useGetVideosFromApi } from '../../hooks/useGetVideosFromApi'
-import { AppStackRoutes } from '../../routes/routes'
 
 import { styles } from './styles'
 
@@ -13,7 +11,15 @@ export const Home = ({
 }: {
   navigation: NavigationProp<AppStackRoutes>
 }) => {
-  const { videos, isLoading } = useGetVideosFromApi()
+  const { videos, isLoading, isError, error } = useGetVideosFromApi()
+
+  if (isError) {
+    console.error(error?.message)
+  }
+
+  if (error) {
+    return <ErrorComponent />
+  }
 
   return (
     <SafeAreaView style={styles.safeAreaView}>

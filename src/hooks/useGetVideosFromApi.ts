@@ -1,8 +1,7 @@
+import { QUERY_KEYS } from '@constants'
+import { getVideos } from '@services'
 import { useQuery } from '@tanstack/react-query'
-
-import { QUERY_KEYS } from '../constants/queryKeys'
-import { getVideos } from '../services/get-videos'
-import { VideosResponse } from '../types/video'
+import { VideosResponse } from '@types'
 
 export const useGetVideosFromApi = () => {
   const {

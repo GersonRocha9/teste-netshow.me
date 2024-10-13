@@ -1,6 +1,5 @@
 import { NavigationProp } from '@react-navigation/native'
-
-import { AppStackRoutes } from '../routes/routes'
+import { AppStackRoutes } from '@routes'
 
 export interface VideoDetailsProps {
   route: {

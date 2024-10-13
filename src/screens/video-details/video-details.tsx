@@ -1,6 +1,12 @@
+import { Header, VideoLoading } from '@components'
+import { QUERY_KEYS } from '@constants'
 import { FontAwesome, MaterialIcons } from '@expo/vector-icons'
+import { useVideoById } from '@hooks'
 import { useFocusEffect } from '@react-navigation/native'
+import { updateVideoField } from '@services'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { VideoDetailsProps, CATEGORIES } from '@types'
+import { convertDate } from '@utils'
 import { Video, ResizeMode } from 'expo-av'
 import { useCallback, useState, useRef } from 'react'
 import {
@@ -11,15 +17,6 @@ import {
   View,
 } from 'react-native'
 
-import { Header } from '../../components/header'
-import { VideoLoading } from '../../components/video-loading'
-import { QUERY_KEYS } from '../../constants/queryKeys'
-import { useVideoById } from '../../hooks/useVideoById'
-import { updateVideoField } from '../../services/update-video-field'
-import { CATEGORIES } from '../../types/video'
-import { VideoDetailsProps } from '../../types/video-details'
-import { convertDate } from '../../utils/convert-date'
-
 import { styles } from './styles'
 
 export const VideoDetails = ({ route, navigation }: VideoDetailsProps) => {
@@ -29,19 +26,15 @@ export const VideoDetails = ({ route, navigation }: VideoDetailsProps) => {
   const [isLoading, setIsLoading] = useState(true)
   const hasFocusedRef = useRef(false)
 
-  const likeVideoMutation = useMutation({
-    mutationFn: () =>
-      updateVideoField(videoId, 'likes', video?.likes as number),
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: [QUERY_KEYS.VIDEO_INFO, videoId],
-      })
-    },
-  })
-
-  const countViewVideoMutation = useMutation({
-    mutationFn: () =>
-      updateVideoField(videoId, 'views', video?.views as number),
+  const updatedVideoMutation = useMutation({
+    mutationFn: (action: 'likes' | 'views') =>
+      updateVideoField(
+        videoId,
+        action,
+        action === 'likes'
+          ? (video?.likes as number)
+          : (video?.views as number),
+      ),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.VIDEO_INFO, videoId],
@@ -52,7 +45,7 @@ export const VideoDetails = ({ route, navigation }: VideoDetailsProps) => {
   useFocusEffect(
     useCallback(() => {
       if (!hasFocusedRef.current) {
-        countViewVideoMutation.mutate()
+        updatedVideoMutation.mutate('views')
         hasFocusedRef.current = true
       }
     }, [videoId, video?.views]),
@@ -113,7 +106,7 @@ export const VideoDetails = ({ route, navigation }: VideoDetailsProps) => {
             <TouchableOpacity
               style={styles.iconRow}
               onPress={() => {
-                likeVideoMutation.mutate()
+                updatedVideoMutation.mutate('likes')
               }}
             >
               <MaterialIcons name="thumb-up" size={16} color="gray" />

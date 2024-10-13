@@ -1,4 +1,6 @@
 import { NavigationProp } from '@react-navigation/native'
+import { AppStackRoutes } from '@routes'
+import { VideosResponse } from '@types'
 import {
   View,
   ImageBackground,
@@ -11,9 +13,6 @@ import Animated, {
   SlideInLeft,
   SlideInRight,
 } from 'react-native-reanimated'
-
-import { AppStackRoutes } from '../routes/routes'
-import { VideosResponse } from '../types/video'
 
 const WIDTH_SCREEN = Dimensions.get('window').width
 const TouchableAnimated = Animated.createAnimatedComponent(TouchableOpacity)
