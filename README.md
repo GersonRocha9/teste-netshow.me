@@ -5,22 +5,22 @@
     <img src="./assets/screenshot-2.png" alt="Screenshot 2" width="300"/>
 </div>
 
-## Descrição do App
+## App Description
 
-Este aplicativo é uma solução que permite assistir vídeos em React Native com navegação entre telas, reprodução via HLS, API dinâmica com json-server, skeletons e animações para aprimorar a UX.
+This application is a solution for watching videos in React Native, featuring screen navigation, HLS playback, a dynamic API with json-server, skeletons, and animations to enhance the UX.
 
-## Tecnologias Usadas
+## Technologies Used
 
-O projeto foi desenvolvido utilizando as seguintes tecnologias e bibliotecas:
+The project was developed using the following technologies and libraries:
 
-- **React**: Biblioteca JavaScript para construir interfaces de usuário.
-- **React Native**: Framework para construir aplicações móveis.
-- **Expo**: Ferramenta para desenvolvimento rápido de aplicativos React Native.
-- **React Navigation**: Biblioteca para navegação em aplicativos React Native.
-- **React Query**: Ferramenta para gerenciamento de estado e cache de dados assíncronos.
-- **Axios**: Cliente HTTP baseado em Promises para o navegador e Node.js.
-- **JSON Server**: Para simular uma API REST.
-- **Outras Dependências**:
+- **React**: JavaScript library for building user interfaces.
+- **React Native**: Framework for building mobile applications.
+- **Expo**: Tool for rapid React Native app development.
+- **React Navigation**: Library for navigation in React Native apps.
+- **React Query**: Tool for managing state and caching asynchronous data.
+- **Axios**: Promise-based HTTP client for the browser and Node.js.
+- **JSON Server**: To simulate a REST API.
+- **Other Dependencies**:
   - `react-native-safe-area-context`
   - `react-native-screens`
   - `react-native-svg`
@@ -28,15 +28,15 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias e bibliotecas:
   - `expo-av`
   - `rn-placeholder`
 
-### Dependências de Desenvolvimento
+### Development Dependencies
 
-- **TypeScript**: Superset do JavaScript que adiciona tipos estáticos.
-- **ESLint**: Ferramenta de linting para identificar e corrigir problemas em código JavaScript e TypeScript.
-- **Configurações ESLint da Rocketseat**: Conjunto de regras para manter a qualidade do código.
+- **TypeScript**: Superset of JavaScript that adds static types.
+- **ESLint**: Linting tool to identify and fix issues in JavaScript and TypeScript code.
+- **Rocketseat ESLint Configurations**: A set of rules to maintain code quality.
 
-## Como rodar o projeto
+## How to Run the Project
 
-Siga os passos abaixo para rodar o projeto na sua máquina:
+Follow the steps below to run the project on your machine:
 
 ```bash
 git clone https://github.com/GersonRocha9/teste-netshow.me.git
@@ -48,4 +48,3 @@ npm install
 npm run server
 
 npx expo start
-```
